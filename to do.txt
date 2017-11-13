@@ -1,0 +1,1 @@
+implement bootstrap (alice with pull left, bob pull right, charlie as node output console)

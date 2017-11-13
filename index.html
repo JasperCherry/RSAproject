@@ -1,1 +1,18 @@
-<p>Hello world</p>
+<html>
+<head>
+</head>
+<body>
+  <button onclick="apiCall()">Click to make api call</button>
+  <script>
+    function apiCall() {
+      var xmlHttp = new XMLHttpRequest();
+      xmlHttp.onreadystatechange = function() {
+        if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
+          console.log(xmlHttp.responseText);
+      }
+      xmlHttp.open("GET", "http://localhost:8080/firstCall", true); // true for asynchronous
+      xmlHttp.send(null);
+    }
+  </script>
+</body>
+</html>
