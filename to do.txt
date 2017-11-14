@@ -1,1 +1,36 @@
-implement bootstrap (alice with pull left, bob pull right, charlie as node output console)
+Part1 plan
+
+1. demonstrate how p and q are generated
+2. how e is generated 0<e<r   e no common factor with r
+3. how private key d and public (e,n) are generated
+
+4. show a special case where program does not work securely
+program should as to input some parameters that would lead to problem.
+
+
+e,n -> public key
+d,n -> private key
+
+
+
+
+
+
+
+
+-----------------------------------------
+
+instruction for running the project
+
+styling
+
+use wolfram alpha api for guessing RSA ? maybe theres some ready api for it
+
+
+--- to do now ---
+
+usePrimes should check if input number is a prime and inform
+
+enetering e should check if e is smaller then o(n)
+
+figure out when genereting d will get stuck, and prevent it

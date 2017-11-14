@@ -1,18 +1,97 @@
 <html>
+
 <head>
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <!-- jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <!-- Latest compiled JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <!-- users js functionality -->
+  <script src="logic.js"></script>
 </head>
+
 <body>
-  <button onclick="apiCall()">Click to make api call</button>
-  <script>
-    function apiCall() {
-      var xmlHttp = new XMLHttpRequest();
-      xmlHttp.onreadystatechange = function() {
-        if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
-          console.log(xmlHttp.responseText);
-      }
-      xmlHttp.open("GET", "http://localhost:8080/firstCall", true); // true for asynchronous
-      xmlHttp.send(null);
-    }
-  </script>
+  <!-- A -->
+  <div class="col-xs-4 well pull-left">
+    <h3>Alice</h3>
+    <button>Reset configuration</button>
+    <br>
+    <br>
+    <h4>RSA setup</h4>
+    <h4>p (first prime)</h4>
+    <input type="number" id="p" autocomplete="off">
+    <h4>q (second prime)</h4>
+    <input type="number" id="q" autocomplete="off">
+    <br>
+    <br>
+    <button onclick="usePrimes()">Generate n and ϕ(n)</button>
+    <br>
+    <br>
+    <h4 id="n">n=</h4>
+    <h4 id="ϕn">ϕ(n)=</h4>
+    <br>
+    <h4>e</h4>
+    <input type="number" id="e" autocomplete="off">
+    <br>
+    <br>
+    <button onclick="generateD()">Generate d</button>
+    <br>
+    <br>
+    <h4 id="d">d=</h4>
+    <br>
+    <br>
+    <button onclick="generateKeys()">Generate keys</button>
+    <br>
+    <br>
+    <h4 id="public">public key (e,n) -></h4>
+    <br>
+    <h4 id="private">private key (d,n) -></h4>
+    <br>
+    <br>
+    <button>Send public key to Bob</button>
+    <br>
+    <br>
+    <h4>Message (plaintext)</h4>
+    <input type="number" id="msg" autocomplete="off">
+    <br>
+    <br>
+    <button>Encrypt message and send to Bob</button>
+  </div>
+
+  <!-- B -->
+  <div class="col-xs-4 well pull-center">
+    <h3>Charlie</h3>
+    <h4>(interceptor)</h4>
+
+
+
+
+
+
+
+
+
+
+  </div>
+  <!-- C -->
+  <div class="col-xs-4 well pull-right">
+    <h3>Bob</h3>
+
+
+
+
+
+
+  </div>
+
+
+
+
+
+
+
+
 </body>
+
 </html>
