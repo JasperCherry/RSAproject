@@ -24,13 +24,21 @@ instruction for running the project
 
 styling
 
+
+interception and sending false key
+
+alice msg received section
+
+
+charlie done at the end
+
+--- to do now -----------------------------------
+
+
+node package
+
+
 use wolfram alpha api for guessing RSA ? maybe theres some ready api for it
 
 
---- to do now ---
 
-usePrimes should check if input number is a prime and inform
-
-enetering e should check if e is smaller then o(n)
-
-figure out when genereting d will get stuck, and prevent it

@@ -13,10 +13,8 @@
 
 <body>
   <!-- A -->
-  <div class="col-xs-4 well pull-left">
+  <div class="col-xs-4 well pull-left" id="aliceDiv">
     <h3>Alice</h3>
-    <button>Reset configuration</button>
-    <br>
     <br>
     <h4>RSA setup</h4>
     <h4>p (first prime)</h4>
@@ -27,46 +25,72 @@
     <br>
     <button onclick="usePrimes()">Generate n and ϕ(n)</button>
     <br>
-    <br>
     <h4 id="n">n=</h4>
     <h4 id="ϕn">ϕ(n)=</h4>
-    <br>
-    <h4>e</h4>
+    <h4 style="display:inline;">e = </h4>
     <input type="number" id="e" autocomplete="off">
     <br>
     <br>
     <button onclick="generateD()">Generate d</button>
     <br>
-    <br>
     <h4 id="d">d=</h4>
-    <br>
-    <br>
     <button onclick="generateKeys()">Generate keys</button>
     <br>
-    <br>
     <h4 id="public">public key (e,n) -></h4>
-    <br>
     <h4 id="private">private key (d,n) -></h4>
     <br>
     <br>
-    <button>Send public key to Bob</button>
+    <button onclick="sendPublicKey()">Send public key to Bob</button>
     <br>
     <br>
-    <h4>Message (plaintext)</h4>
+    <h4>Send message</h4>
     <input type="number" id="msg" autocomplete="off">
     <br>
     <br>
-    <button>Encrypt message and send to Bob</button>
+    <button onclick="sendMessage()">Encrypt message and send to Bob</button>
   </div>
+
+
 
   <!-- B -->
-  <div class="col-xs-4 well pull-center">
+  <div class="col-xs-4 well pull-right" id="bobDiv">
+    <h3>Bob</h3>
+    <br>
+    <h4>public key :</h4>
+    <h4 id="bobKey">none</h4>
+    <br>
+    <h4>message received:</h4>
+    <h4 id="bobMsgR">none</h4>
+    <br>
+    <h4>message decrypted:</h4>
+    <h4 id="bobMsgD">none</h4>
+    <br>
+    <h4>Send message</h4>
+    <input type="number" id="bobMsg" autocomplete="off">
+    <br>
+    <br>
+    <button>Encrypt message and send to Alice</button>
+
+
+
+  </div>
+
+
+
+  <!-- C -->
+  <div class="col-xs-4 well pull-center" id="charlieDiv">
     <h3>Charlie</h3>
     <h4>(interceptor)</h4>
-
-
-
-
+    <br>
+    <h4 style="display:inline;">key interception</h4>
+    <input type="checkbox">
+    <br>
+    <br>
+    <h4 style="display:inline;">message interception</h4>
+    <input type="checkbox">
+    <br>
+    <br>
+    <button>Reset entire configuration</button>
 
 
 
@@ -74,19 +98,6 @@
 
 
   </div>
-  <!-- C -->
-  <div class="col-xs-4 well pull-right">
-    <h3>Bob</h3>
-
-
-
-
-
-
-  </div>
-
-
-
 
 
 
