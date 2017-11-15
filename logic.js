@@ -34,7 +34,6 @@ function processBobDec() {
       res = JSON.parse(res);
       res = res.result;
       document.getElementById("bobMsgD").innerHTML = res;
-      processBobDec();
     }
   }
   xmlHttp.open("GET", 'http://localhost:8080/rsa/' + bobMsgReceived + '/' + bobE + '/' + bobN, true); // true for asynchronous
@@ -65,7 +64,6 @@ function processAliceDec() {
       res = JSON.parse(res);
       res = res.result;
       document.getElementById("msgD").innerHTML = res;
-      processBobDec();
     }
   }
   xmlHttp.open("GET", 'http://localhost:8080/rsa/' + msgReceived + '/' + d + '/' + n, true); // true for asynchronous
@@ -117,7 +115,7 @@ function generateD() {
   } else if (e <= 0 || e >= ϕn) {
     alert("e has to be larger then 0 and smaller then ϕn");
   } else {
-    if (!(checkIfRelPrime(e))) {
+    if (!(checkIfRelPrime(e, ϕn))) { // first argument should be smaller then second
       alert("e has to be relatively prime to ϕn");
     } else {
       while (((e * d) % ϕn) != 1) {
@@ -150,9 +148,13 @@ function checkIfPrime(number) {
   return true;
 }
 
-function checkIfRelPrime(number) {
-// to do
-
+function checkIfRelPrime(number, number2) {
+  for (let x = 2; x < number + 1; x++) {
+    if (number % x == 0 && number2 % x == 0) {
+      return false;
+    }
+  }
+  return true;
 }
 
 function sendPublicKey() {

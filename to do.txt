@@ -26,17 +26,13 @@ charlie done at the end
 
 
 instruction for running the project readme md
-
-
+instruction for using, explain js limitation with integer(double) likewise in java
 
 
 
 --- to do now -----------------------------------
 
 
-
-// fix how e is generated
-e  =  3 - its getting stuck
 
 finish charlie ui:
 - alice key intercepted
