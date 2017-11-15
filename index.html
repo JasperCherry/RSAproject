@@ -38,16 +38,18 @@
     <br>
     <h4 id="public">public key (e,n) -></h4>
     <h4 id="private">private key (d,n) -></h4>
-    <br>
-    <br>
     <button onclick="sendPublicKey()">Send public key to Bob</button>
-    <br>
     <br>
     <h4>Send message</h4>
     <input type="number" id="msg" autocomplete="off">
     <br>
     <br>
     <button onclick="sendMessage()">Encrypt message and send to Bob</button>
+    <h4>message received:</h4>
+    <h4 id="msgR">none</h4>
+    <br>
+    <h4>message decrypted:</h4>
+    <h4 id="msgD">none</h4>
   </div>
 
 
@@ -69,7 +71,7 @@
     <input type="number" id="bobMsg" autocomplete="off">
     <br>
     <br>
-    <button>Encrypt message and send to Alice</button>
+    <button onclick="bobSendMessage()">Encrypt message and send to Alice</button>
 
 
 
@@ -79,14 +81,11 @@
 
   <!-- C -->
   <div class="col-xs-4 well pull-center" id="charlieDiv">
+    <button onclick="test()">Test button</button>
     <h3>Charlie</h3>
     <h4>(interceptor)</h4>
     <br>
-    <h4 style="display:inline;">key interception</h4>
-    <input type="checkbox">
-    <br>
-    <br>
-    <h4 style="display:inline;">message interception</h4>
+    <h4 style="display:inline;">Perform key interception and replacement</h4>
     <input type="checkbox">
     <br>
     <br>

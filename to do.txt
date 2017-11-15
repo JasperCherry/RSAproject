@@ -20,25 +20,26 @@ d,n -> private key
 
 -----------------------------------------
 
-instruction for running the project
-
-styling
-
-
-interception and sending false key
-
-alice msg received section
-
 
 charlie done at the end
+-interception and sending false key
+
+
+instruction for running the project readme md
+
+
+
+
 
 --- to do now -----------------------------------
 
 
-node package
 
+// fix how e is generated
+e  =  3 - its getting stuck
 
-use wolfram alpha api for guessing RSA ? maybe theres some ready api for it
-
-
-
+finish charlie ui:
+- alice key intercepted
+- false key send to bob
+- last message intercepted
+- last message decrypted

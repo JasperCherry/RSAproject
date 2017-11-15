@@ -7,6 +7,8 @@ let e;
 let d = 0;
 let m;
 let msgSent;
+let msgReceived;
+let msgDecrypted;
 
 // control
 let genKeys = false;
@@ -14,9 +16,77 @@ let keyInt = false;
 let msgInt = true;
 
 // bob data
+let bobMsgReceived;
+let bobMsgDecrypted;
 let bobN;
 let bobE;
 let bobMsg;
+
+function test() {
+  //processRsa(3,37,119);
+}
+
+function processBobDec() {
+  var xmlHttp = new XMLHttpRequest();
+  xmlHttp.onreadystatechange = function() {
+    if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
+      let res = (xmlHttp.responseText);
+      res = JSON.parse(res);
+      res = res.result;
+      document.getElementById("bobMsgD").innerHTML = res;
+      processBobDec();
+    }
+  }
+  xmlHttp.open("GET", 'http://localhost:8080/rsa/' + bobMsgReceived + '/' + bobE + '/' + bobN, true); // true for asynchronous
+  xmlHttp.send(null);
+}
+
+function processBob() {
+  var xmlHttp = new XMLHttpRequest();
+  xmlHttp.onreadystatechange = function() {
+    if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
+      let res = (xmlHttp.responseText);
+      res = JSON.parse(res);
+      res = res.result;
+      bobMsgReceived = res;
+      document.getElementById("bobMsgR").innerHTML = bobMsgReceived;
+      processBobDec();
+    }
+  }
+  xmlHttp.open("GET", 'http://localhost:8080/rsa/' + msg + '/' + d + '/' + n, true); // true for asynchronous
+  xmlHttp.send(null);
+}
+
+function processAliceDec() {
+  var xmlHttp = new XMLHttpRequest();
+  xmlHttp.onreadystatechange = function() {
+    if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
+      let res = (xmlHttp.responseText);
+      res = JSON.parse(res);
+      res = res.result;
+      document.getElementById("msgD").innerHTML = res;
+      processBobDec();
+    }
+  }
+  xmlHttp.open("GET", 'http://localhost:8080/rsa/' + msgReceived + '/' + d + '/' + n, true); // true for asynchronous
+  xmlHttp.send(null);
+}
+
+function processAlice() {
+  var xmlHttp = new XMLHttpRequest();
+  xmlHttp.onreadystatechange = function() {
+    if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
+      let res = (xmlHttp.responseText);
+      res = JSON.parse(res);
+      res = res.result;
+      msgReceived = res;
+      document.getElementById("msgR").innerHTML = msgReceived;
+      processAliceDec();
+    }
+  }
+  xmlHttp.open("GET", 'http://localhost:8080/rsa/' + bobMsg + '/' + bobE + '/' + bobN, true); // true for asynchronous
+  xmlHttp.send(null);
+}
 
 function usePrimes() {
   p = document.getElementById("p").value;
@@ -47,8 +117,8 @@ function generateD() {
   } else if (e <= 0 || e >= ϕn) {
     alert("e has to be larger then 0 and smaller then ϕn");
   } else {
-    if (!(checkIfPrime(e))) {
-      alert("e has to be prime");
+    if (!(checkIfRelPrime(e))) {
+      alert("e has to be relatively prime to ϕn");
     } else {
       while (((e * d) % ϕn) != 1) {
         d++;
@@ -80,6 +150,11 @@ function checkIfPrime(number) {
   return true;
 }
 
+function checkIfRelPrime(number) {
+// to do
+
+}
+
 function sendPublicKey() {
   if (!genKeys) {
     alert("You need to generate key first");
@@ -97,8 +172,17 @@ function sendMessage() {
   } else if (msg == '') {
     alert("The message is empty");
   } else {
-    // needs wolfram alpha
+    processBob();
+  }
+}
 
-
+function bobSendMessage() {
+  bobMsg = document.getElementById("bobMsg").value;
+  if (bobN == null || bobE == null) {
+    alert("You need to send Bob the public key first");
+  } else if (bobMsg == '') {
+    alert("The message is empty");
+  } else {
+    processAlice();
   }
 }
