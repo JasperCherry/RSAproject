@@ -5,13 +5,4 @@ Part 2 - to be done
 
 
 
-
-instruction for running the project readme md
-instruction for using, explain js limitation with integer(double) likewise in java
-
-
-
 --- to do now -----------------------------------
-
-
-finish charlie part
