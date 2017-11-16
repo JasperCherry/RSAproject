@@ -1,28 +1,9 @@
-Part1 plan
-
-1. demonstrate how p and q are generated
-2. how e is generated 0<e<r   e no common factor with r
-3. how private key d and public (e,n) are generated
-
-4. show a special case where program does not work securely
-program should as to input some parameters that would lead to problem.
-
-
-e,n -> public key
-d,n -> private key
-
-
-
-
-
-
+Part 2 - to be done
 
 
 -----------------------------------------
 
 
-charlie done at the end
--interception and sending false key
 
 
 instruction for running the project readme md
@@ -33,9 +14,4 @@ instruction for using, explain js limitation with integer(double) likewise in ja
 --- to do now -----------------------------------
 
 
-
-finish charlie ui:
-- alice key intercepted
-- false key send to bob
-- last message intercepted
-- last message decrypted
+finish charlie part

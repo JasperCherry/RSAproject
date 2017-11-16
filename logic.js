@@ -14,6 +14,7 @@ let msgDecrypted;
 let genKeys = false;
 let keyInt = false;
 let msgInt = true;
+let intercept = false;
 
 // bob data
 let bobMsgReceived;
@@ -22,8 +23,67 @@ let bobN;
 let bobE;
 let bobMsg;
 
-function test() {
-  //processRsa(3,37,119);
+// charlie data
+// false key data
+let falseKeyN=583951;
+let falseKeyE=6711;
+let falseKeyD=1760391;
+
+
+
+
+
+
+
+function test() { // to be deleted
+  console.log(intercept);
+}
+
+
+
+
+function restart() {
+  // alice data
+  p = null;
+  q = null;
+  n = null;
+  ϕn = null;
+  e = null;
+  d = 0;
+  m = null;
+  msgSent = null;
+  msgReceived = null;
+  msgDecrypted = null;
+  // control
+  genKeys = false;
+  keyInt = false;
+  msgInt = true;
+  intercept = false;
+  // bob data
+  bobMsgReceived = null;
+  bobMsgDecrypted = null;
+  bobN = null;
+  bobE = null;
+  bobMsg = null;
+  // intercept option
+  intercept = document.getElementById("intercept");
+  intercept = intercept.checked;
+  // html restart
+  document.getElementById("p").value = null;
+  document.getElementById("q").value = null;
+  document.getElementById("n").innerHTML = "n=";
+  document.getElementById("ϕn").innerHTML = "ϕ(n)=";
+  document.getElementById("e").value = null;
+  document.getElementById("d").innerHTML = "d=";
+  document.getElementById("public").innerHTML = "public key (e,n) ->";
+  document.getElementById("private").innerHTML = "private key (d,n) ->";
+  document.getElementById("msg").value = null;
+  document.getElementById("msgR").innerHTML = "none";
+  document.getElementById("msgD").innerHTML = "none";
+  document.getElementById("bobKey").innerHTML = "none";
+  document.getElementById("bobMsgR").innerHTML = "none";
+  document.getElementById("bobMsgD").innerHTML = "none";
+  document.getElementById("bobMsg").value = null;
 }
 
 function processBobDec() {
@@ -91,6 +151,8 @@ function usePrimes() {
   q = document.getElementById("q").value;
   if (p == '' || q == '') {
     alert("You need to enter both primes");
+  } else if (isNaN(p) || isNaN(q)) {
+    alert("You need to enter only numbers");
   } else {
     if (!checkIfPrime(p)) {
       alert("p is not a prime");
@@ -102,7 +164,6 @@ function usePrimes() {
       ϕn = (p - 1) * (q - 1);
       document.getElementById("ϕn").innerHTML = "ϕ(n)=" + ϕn;
     }
-
   }
 }
 

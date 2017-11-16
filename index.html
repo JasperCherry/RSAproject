@@ -18,9 +18,9 @@
     <br>
     <h4>RSA setup</h4>
     <h4>p (first prime)</h4>
-    <input type="number" id="p" autocomplete="off">
+    <input type="text" maxlength="4" id="p" autocomplete="off">
     <h4>q (second prime)</h4>
-    <input type="number" id="q" autocomplete="off">
+    <input type="text" maxlength="4" id="q" autocomplete="off">
     <br>
     <br>
     <button onclick="usePrimes()">Generate n and ϕ(n)</button>
@@ -51,9 +51,6 @@
     <h4>message decrypted:</h4>
     <h4 id="msgD">none</h4>
   </div>
-
-
-
   <!-- B -->
   <div class="col-xs-4 well pull-right" id="bobDiv">
     <h3>Bob</h3>
@@ -72,36 +69,40 @@
     <br>
     <br>
     <button onclick="bobSendMessage()">Encrypt message and send to Alice</button>
-
-
-
   </div>
-
-
 
   <!-- C -->
   <div class="col-xs-4 well pull-center" id="charlieDiv">
     <button onclick="test()">Test button</button>
-    <h3>Charlie</h3>
-    <h4>(interceptor)</h4>
+    <h3>Charlie (interceptor)</h3>
     <br>
-    <h4 style="display:inline;">Perform key interception and replacement</h4>
-    <input type="checkbox">
+    <h4 style="display:inline;">Intercept</h4>
+    <input id="intercept" type="checkbox">
     <br>
     <br>
-    <button>Reset entire configuration</button>
-
-
-
-
-
-
+    <button onclick="restart()">Restart</button>
+    <br>
+    <br>
+    <!--
+    <h4>key intercepted from Alice :</h4>
+    <h4 id="">none</h4>
+    <br>
+    <h4>key send to Bob :</h4>
+    <h4 id="">none</h4>
+    <br>
+    <h4>last message intercepted from Alice :</h4>
+    <h4 id="">none</h4>
+    <br>
+    <h4>last message decrypted from Alice :</h4>
+    <h4 id="">none</h4>
+    <br>
+    <h4>last message intercepted from Bob :</h4>
+    <h4 id="">none</h4>
+    <br>
+    <h4>last message decrypted from Bob :</h4>
+    <h4 id="">none</h4>
+  -->
   </div>
-
-
-
-
-
 </body>
 
 </html>
