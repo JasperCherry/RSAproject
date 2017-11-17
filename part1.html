@@ -13,8 +13,8 @@
 
 <body>
   <!-- A -->
-  <div class="col-xs-4 well pull-left" id="aliceDiv">
-    <h3>Alice</h3>
+  <div style="background-color:orange" class="col-xs-4 well pull-left" id="aliceDiv">
+    <h2>Alice</h2>
     <br>
     <h4>RSA setup</h4>
     <h4>p (first prime)</h4>
@@ -23,7 +23,7 @@
     <input type="text" maxlength="4" id="q" autocomplete="off">
     <br>
     <br>
-    <button onclick="usePrimes()">Generate n and ϕ(n)</button>
+    <button class="btn btn-success" onclick="usePrimes()">Generate n and ϕ(n)</button>
     <br>
     <h4 id="n">n=</h4>
     <h4 id="ϕn">ϕ(n)=</h4>
@@ -31,20 +31,20 @@
     <input type="number" id="e" autocomplete="off">
     <br>
     <br>
-    <button onclick="generateD()">Generate d</button>
+    <button class="btn btn-success" onclick="generateD()">Generate d</button>
     <br>
     <h4 id="d">d=</h4>
-    <button onclick="generateKeys()">Generate keys</button>
+    <button class="btn btn-success" onclick="generateKeys()">Generate keys</button>
     <br>
     <h4 id="public">public key (e,n) -></h4>
     <h4 id="private">private key (d,n) -></h4>
-    <button onclick="sendPublicKey()">Send public key to Bob</button>
+    <button class="btn btn-success" onclick="sendPublicKey()">Send public key to Bob</button>
     <br>
     <h4>Send message</h4>
     <input type="number" id="msg" autocomplete="off">
     <br>
     <br>
-    <button onclick="sendMessage()">Encrypt message and send to Bob</button>
+    <button class="btn btn-success" onclick="sendMessage()">Encrypt message and send to Bob</button>
     <h4>message received:</h4>
     <h4 id="msgR">none</h4>
     <br>
@@ -52,8 +52,8 @@
     <h4 id="msgD">none</h4>
   </div>
   <!-- B -->
-  <div class="col-xs-4 well pull-right" id="bobDiv">
-    <h3>Bob</h3>
+  <div style="background-color:lightblue" class="col-xs-4 well pull-right" id="bobDiv">
+    <h2>Bob</h2>
     <br>
     <h4>public key :</h4>
     <h4 id="bobKey">none</h4>
@@ -68,16 +68,15 @@
     <input type="number" id="bobMsg" autocomplete="off">
     <br>
     <br>
-    <button onclick="bobSendMessage()">Encrypt message and send to Alice</button>
+    <button class="btn btn-success" onclick="bobSendMessage()">Encrypt message and send to Alice</button>
   </div>
-
   <!-- C -->
-  <div class="col-xs-4 well pull-center" id="charlieDiv">
-    <h3>Charlie (interceptor)</h3>
+  <div style="background-color:lightgray" class="col-xs-4 well pull-center" id="charlieDiv">
+    <h2>Charlie (interceptor)</h2>
     <br>
     <h4 style="display:inline;">Intercept</h4>
     <input id="intercept" type="checkbox">
-    <button style="display:inline;" class="pull-right" onclick="restart()">Restart</button>
+    <button class="btn btn-danger" style="display:inline;" class="pull-right" onclick="restart()">Restart</button>
     <br>
     <br>
     <h4>key intercepted from Alice :</h4>

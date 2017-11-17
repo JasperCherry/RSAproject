@@ -13,8 +13,8 @@
 
 <body>
   <!-- A -->
-  <div class="col-xs-4 well pull-left">
-    <h3>Alice</h3>
+  <div style="background-color:orange" class="col-xs-4 well pull-left">
+    <h2>Alice</h2>
     <br>
     <h4>Private key:</h4>
     <h4>(10853,12533)</h4>
@@ -22,21 +22,21 @@
     <h4>Public key:</h4>
     <h4>(17,12533)</h4>
     <br>
-    <button onclick="aliceAsk()">Ask for Bob's key</button>
+    <button class="btn btn-success" onclick="aliceAsk()">Ask for Bob's key</button>
     <h4>Bob public key:</h4>
     <h4 id="ABkey">None</h4>
     <br>
     <h4>Bob public key signature:</h4>
     <h4 id="ABsig">None</h4>
     <br>
-    <button onclick="aliceSendNonce()">Encrypt nonce and send Bob</button>
+    <button class="btn btn-success" onclick="aliceSendNonce()">Encrypt nonce and send Bob</button>
     <br>
     <h4>One time nonce:</h4>
     <h4>77</h4>
     <br>
     <h4>Bob nonce:</h4>
     <h4 id="ABnonce">None</h4>
-    <button onclick="aliceDecrypt()">Decrypt</button>
+    <button class="btn btn-success" onclick="aliceDecrypt()">Decrypt</button>
     <br>
     <h4>My nonce received back:</h4>
     <h4 id="Aback">None</h4>
@@ -46,11 +46,11 @@
     <br>
     <h4>Bob nonce decrypted:</h4>
     <h4 id="ABnonced">None</h4>
-    <button onclick="aliceSendBack()">Send back Bob's nonce</button>
+    <button class="btn btn-success" onclick="aliceSendBack()">Send back Bob's nonce</button>
   </div>
   <!-- B -->
-  <div class="col-xs-4 well pull-right">
-    <h3>Bob</h3>
+  <div style="background-color:lightblue" class="col-xs-4 well pull-right">
+    <h2>Bob</h2>
     <br>
     <h4>Private key:</h4>
     <h4>(18419,21311)</h4>
@@ -58,7 +58,7 @@
     <h4>Public key:</h4>
     <h4>(179,21311)</h4>
     <br>
-    <button onclick="bobAsk()">Ask for Alice's key</button>
+    <button class="btn btn-success" onclick="bobAsk()">Ask for Alice's key</button>
     <h4>Alice public key:</h4>
     <h4 id="BAkey">None</h4>
     <br>
@@ -71,20 +71,19 @@
     <h4>Alice nonce:</h4>
     <h4 id="BAnonce">None</h4>
     <br>
-    <button onclick="bobDecrypt()">Decrypt</button>
+    <button class="btn btn-success" onclick="bobDecrypt()">Decrypt</button>
     <h4>Alice nonce decrypted:</h4>
     <h4 id="BAnonced">None</h4>
-    <button onclick="bobSendNonce()">Encrypt my nonce and send back decrypted Alice nonce</button>
+    <button class="btn btn-success" onclick="bobSendNonce()">Encrypt my nonce and send back decrypted Alice nonce</button>
     <h4>My nonce received back:</h4>
     <h4 id="BAback">None</h4>
     <br>
     <h4>My nonce received back decrypted:</h4>
     <h4 id="BAbackD">None</h4>
   </div>
-
   <!-- C -->
-  <div class="col-xs-4 well pull-center">
-    <h3>Server</h3>
+  <div style="background-color:coral" class="col-xs-4 well pull-center">
+    <h2>Server</h2>
     <br>
     <h4>Alice public key:</h4>
     <h4>(17,12533)</h4>
@@ -97,8 +96,6 @@
     <br>
     <h4>Bob public key signature:</h4>
     <h4>999bd551d9418dbd 38fb322e8acf6791 58c51f41b2bde020 077c06baf352dc96</h4>
-    <br>
-
   </div>
 </body>
 

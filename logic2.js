@@ -190,7 +190,9 @@ function aliceSendBackDec() {
       res = res.result;
       AnonceBack = res;
       document.getElementById("BAbackD").innerHTML = AnonceBack;
-      alert("Process of authentication has been finished");
+      setTimeout(function() {
+        alert("Process of authentication has been finished");
+      }, 1000);
     }
   }
   xmlHttp.open("GET", 'http://localhost:8080/rsa/' + AnonceBack + '/' + SAe + '/' + SAn, true);
