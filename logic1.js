@@ -389,6 +389,8 @@ function sendMessage() {
     alert("You need to send Bob the public key first");
   } else if (msg == '') {
     alert("The message is empty");
+  } else if (msg >= n) {
+    alert("The message value needs to be smaller then n");
   } else {
     if (intercept) {
       processBobInter();
@@ -404,6 +406,8 @@ function bobSendMessage() {
     alert("You need to send Bob the public key first");
   } else if (bobMsg == '') {
     alert("The message is empty");
+  } else if (bobMsg >= bobN) {
+    alert("The message value needs to be smaller then n");
   } else {
     if (intercept) {
       processAliceInter();

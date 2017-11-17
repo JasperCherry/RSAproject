@@ -1,6 +1,7 @@
-Computer Science coursework project
+Computer Security coursework project
 
 Kacper Wisnicki
+
 Joe Cooper
 
 Installation:

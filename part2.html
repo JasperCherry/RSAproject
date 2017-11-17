@@ -1,0 +1,105 @@
+<html>
+
+<head>
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <!-- jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <!-- Latest compiled JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <!-- users js functionality -->
+  <script src="logic2.js"></script>
+</head>
+
+<body>
+  <!-- A -->
+  <div class="col-xs-4 well pull-left">
+    <h3>Alice</h3>
+    <br>
+    <h4>Private key:</h4>
+    <h4>(10853,12533)</h4>
+    <br>
+    <h4>Public key:</h4>
+    <h4>(17,12533)</h4>
+    <br>
+    <button onclick="aliceAsk()">Ask for Bob's key</button>
+    <h4>Bob public key:</h4>
+    <h4 id="ABkey">None</h4>
+    <br>
+    <h4>Bob public key signature:</h4>
+    <h4 id="ABsig">None</h4>
+    <br>
+    <button onclick="aliceSendNonce()">Encrypt nonce and send Bob</button>
+    <br>
+    <h4>One time nonce:</h4>
+    <h4>77</h4>
+    <br>
+    <h4>Bob nonce:</h4>
+    <h4 id="ABnonce">None</h4>
+    <button onclick="aliceDecrypt()">Decrypt</button>
+    <br>
+    <h4>My nonce received back:</h4>
+    <h4 id="Aback">None</h4>
+    <br>
+    <h4>My nonce received back decrypted:</h4>
+    <h4 id="AbackD">None</h4>
+    <br>
+    <h4>Bob nonce decrypted:</h4>
+    <h4 id="ABnonced">None</h4>
+    <button onclick="aliceSendBack()">Send back Bob's nonce</button>
+  </div>
+  <!-- B -->
+  <div class="col-xs-4 well pull-right">
+    <h3>Bob</h3>
+    <br>
+    <h4>Private key:</h4>
+    <h4>(18419,21311)</h4>
+    <br>
+    <h4>Public key:</h4>
+    <h4>(179,21311)</h4>
+    <br>
+    <button onclick="bobAsk()">Ask for Alice's key</button>
+    <h4>Alice public key:</h4>
+    <h4 id="BAkey">None</h4>
+    <br>
+    <h4>Alice public key signature:</h4>
+    <h4 id="BAsig">None</h4>
+    <br>
+    <h4>One time nonce:</h4>
+    <h4>61</h4>
+    <br>
+    <h4>Alice nonce:</h4>
+    <h4 id="BAnonce">None</h4>
+    <br>
+    <button onclick="bobDecrypt()">Decrypt</button>
+    <h4>Alice nonce decrypted:</h4>
+    <h4 id="BAnonced">None</h4>
+    <button onclick="bobSendNonce()">Encrypt my nonce and send back decrypted Alice nonce</button>
+    <h4>My nonce received back:</h4>
+    <h4 id="BAback">None</h4>
+    <br>
+    <h4>My nonce received back decrypted:</h4>
+    <h4 id="BAbackD">None</h4>
+  </div>
+
+  <!-- C -->
+  <div class="col-xs-4 well pull-center">
+    <h3>Server</h3>
+    <br>
+    <h4>Alice public key:</h4>
+    <h4>(17,12533)</h4>
+    <br>
+    <h4>Alice public key signature (SHA256):</h4>
+    <h4>6e625e58b03c4ecf 1a5e7eb497a103dd 56edcfe5bb25528f 5094a57a28440620</h4>
+    <br>
+    <h4>Bob public key:</h4>
+    <h4>(179,21311)</h4>
+    <br>
+    <h4>Bob public key signature:</h4>
+    <h4>999bd551d9418dbd 38fb322e8acf6791 58c51f41b2bde020 077c06baf352dc96</h4>
+    <br>
+
+  </div>
+</body>
+
+</html>

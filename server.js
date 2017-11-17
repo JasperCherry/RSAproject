@@ -1,6 +1,7 @@
 var Client = require('node-wolfram');
 var Wolfram = new Client('LU2W26-EPRQKKG36V');
 var express = require('express');
+var sha256 = require('sha256');
 var app = express();
 // using router to separate url
 var router = express.Router();
@@ -38,5 +39,13 @@ app.get('/rsa/:m/:e/:n', function(req, res) {
         'result': output
       });
     }
+  });
+});
+
+app.get('/sha/:string', function(req, res) {
+  string = req.params.string;
+  output = (sha256(string));
+  res.send({
+    'result': output
   });
 });
