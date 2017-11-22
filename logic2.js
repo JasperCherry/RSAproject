@@ -40,7 +40,6 @@ function aliceAsk() {
 
 function aliceSendNonce() {
   if (aliceAsked) {
-    aliceEncryptedAndSend = true;
     var xmlHttp = new XMLHttpRequest();
     xmlHttp.onreadystatechange = function() {
       if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
@@ -49,6 +48,7 @@ function aliceSendNonce() {
         res = res.result;
         BnonceReceived = res;
         document.getElementById("BAnonce").innerHTML = BnonceReceived;
+        aliceEncryptedAndSend = true;
       }
     }
     xmlHttp.open("GET", 'http://localhost:8080/rsa/' + Anonce + '/' + Ad + '/' + An, true);
@@ -61,7 +61,6 @@ function aliceSendNonce() {
 // below functions are basen on AJAX callbacks which are using node js api on the server side
 function bobDecrypt() {
   if (bobAsked && aliceEncryptedAndSend) {
-    bobDecrypted = true;
     var xmlHttp = new XMLHttpRequest();
     xmlHttp.onreadystatechange = function() {
       if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
@@ -70,6 +69,7 @@ function bobDecrypt() {
         res = res.result;
         BnonceDec = res;
         document.getElementById("BAnonced").innerHTML = BnonceDec;
+        bobDecrypted = true;
       }
     }
     xmlHttp.open("GET", 'http://localhost:8080/rsa/' + BnonceReceived + '/' + Ae + '/' + An, true);
@@ -89,7 +89,6 @@ function bobAsk() {
 
 function bobSendNonce() {
   if (bobDecrypted) {
-    bobEncryptedAndSendBack = true;
     var xmlHttp = new XMLHttpRequest();
     xmlHttp.onreadystatechange = function() {
       if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
@@ -99,6 +98,7 @@ function bobSendNonce() {
         AnonceReceived = res;
         document.getElementById("ABnonce").innerHTML = AnonceReceived;
         bobSendNonce2();
+        bobEncryptedAndSendBack = true;
       }
     }
     xmlHttp.open("GET", 'http://localhost:8080/rsa/' + Bnounce + '/' + Bd + '/' + Bn, true);
@@ -141,7 +141,6 @@ function bobSendNonce3() {
 
 function aliceDecrypt() {
   if (bobEncryptedAndSendBack) {
-    aliceDecrypted = true;
     var xmlHttp = new XMLHttpRequest();
     xmlHttp.onreadystatechange = function() {
       if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
@@ -150,6 +149,7 @@ function aliceDecrypt() {
         res = res.result;
         AnonceDec = res;
         document.getElementById("ABnonced").innerHTML = AnonceDec;
+        aliceDecrypted = true;
       }
     }
     xmlHttp.open("GET", 'http://localhost:8080/rsa/' + AnonceReceived + '/' + Be + '/' + Bn, true);
@@ -196,4 +196,18 @@ function aliceSendBackDec() {
   }
   xmlHttp.open("GET", 'http://localhost:8080/rsa/' + AnonceBack + '/' + SAe + '/' + SAn, true);
   xmlHttp.send(null);
+}
+
+function notifyElement(id) {
+  for (let x = 1; x < 42; x++) {
+    if (x % 2 == 0) {
+      setTimeout(function() {
+        document.getElementById(id).style.color = "white";
+      }, x * 100);
+    } else {
+      setTimeout(function() {
+        document.getElementById(id).style.color = "black";
+      }, x * 100);
+    }
+  }
 }

@@ -24,31 +24,31 @@
     <h4>Public key:</h4>
     <h4>(17,12533)</h4>
     <br>
-    <button class="btn btn-success" onclick="aliceAsk()">Ask for Bob's key</button>
-    <h4>Bob public key:</h4>
+    <button class="btn btn-success" onclick="aliceAsk(); notifyElement('notif1'); notifyElement('notif2');">Ask for Bob's key</button>
+    <h4 id="notif1">Bob public key:</h4>
     <h4 id="ABkey">None</h4>
     <br>
-    <h4>Bob public key signature:</h4>
+    <h4 id="notif2">Bob public key signature:</h4>
     <h4 id="ABsig">None</h4>
     <br>
-    <button class="btn btn-success" onclick="aliceSendNonce()">Encrypt nonce and send Bob</button>
+    <button class="btn btn-success" onclick="aliceSendNonce();notifyElement('notif3')">Encrypt nonce and send Bob</button>
     <br>
     <h4>One time nonce:</h4>
     <h4>77</h4>
     <br>
-    <h4>Bob nonce:</h4>
+    <h4 id="notif7">Bob nonce:</h4>
     <h4 id="ABnonce">None</h4>
-    <button class="btn btn-success" onclick="aliceDecrypt()">Decrypt</button>
+    <button class="btn btn-success" onclick="aliceDecrypt();notifyElement('notif10')">Decrypt</button>
     <br>
-    <h4>My nonce received back:</h4>
+    <h4 id="notif10">Bob nonce decrypted:</h4>
+    <h4 id="ABnonced">None</h4>
+    <br>
+    <h4 id="notif8">My nonce received back:</h4>
     <h4 id="Aback">None</h4>
     <br>
-    <h4>My nonce received back decrypted:</h4>
+    <h4 id="notif9">My nonce received back decrypted:</h4>
     <h4 id="AbackD">None</h4>
-    <br>
-    <h4>Bob nonce decrypted:</h4>
-    <h4 id="ABnonced">None</h4>
-    <button class="btn btn-success" onclick="aliceSendBack()">Send back Bob's nonce</button>
+    <button class="btn btn-success" onclick="aliceSendBack();notifyElement('notif11');notifyElement('notif12')">Send back Bob's nonce</button>
   </div>
   <!-- B / Bob part, right column -->
   <div style="background-color:lightblue" class="col-xs-4 well pull-right">
@@ -60,27 +60,27 @@
     <h4>Public key:</h4>
     <h4>(179,21311)</h4>
     <br>
-    <button class="btn btn-success" onclick="bobAsk()">Ask for Alice's key</button>
-    <h4>Alice public key:</h4>
+    <button class="btn btn-success" onclick="bobAsk();notifyElement('notif4');notifyElement('notif5');">Ask for Alice's key</button>
+    <h4 id="notif4">Alice public key:</h4>
     <h4 id="BAkey">None</h4>
     <br>
-    <h4>Alice public key signature:</h4>
+    <h4 id="notif5">Alice public key signature:</h4>
     <h4 id="BAsig">None</h4>
     <br>
     <h4>One time nonce:</h4>
     <h4>61</h4>
     <br>
-    <h4>Alice nonce:</h4>
+    <h4 id="notif3">Alice nonce:</h4>
     <h4 id="BAnonce">None</h4>
     <br>
-    <button class="btn btn-success" onclick="bobDecrypt()">Decrypt</button>
-    <h4>Alice nonce decrypted:</h4>
+    <button class="btn btn-success" onclick="bobDecrypt(); notifyElement('notif6')">Decrypt</button>
+    <h4 id="notif6">Alice nonce decrypted:</h4>
     <h4 id="BAnonced">None</h4>
-    <button class="btn btn-success" onclick="bobSendNonce()">Encrypt my nonce and send back decrypted Alice nonce</button>
-    <h4>My nonce received back:</h4>
+    <button class="btn btn-success" onclick="bobSendNonce();notifyElement('notif7');notifyElement('notif8');notifyElement('notif9')">Encrypt and send my and Alice nonce</button>
+    <h4 id="notif11">My nonce received back:</h4>
     <h4 id="BAback">None</h4>
     <br>
-    <h4>My nonce received back decrypted:</h4>
+    <h4 id="notif12">My nonce received back decrypted:</h4>
     <h4 id="BAbackD">None</h4>
   </div>
   <!-- C / Charlie part, middle column -->
