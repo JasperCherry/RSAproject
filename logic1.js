@@ -1,4 +1,5 @@
 // alice data
+// numbers for creating public and private key
 let p;
 let q;
 let n;
@@ -20,7 +21,7 @@ let bobMsgDecrypted;
 let bobN;
 let bobE;
 let bobMsg;
-// charlie data
+// charlie / interceptor data
 // false key data
 let falseKeyN = 583951;
 let falseKeyE = 6711;
@@ -32,7 +33,7 @@ let msgFromAliceD;
 let msgFromBob;
 let msgFromBobD;
 
-
+// restart the whole state of application remembering intercepting boolean option
 function restart() {
   // alice data
   p = null;
@@ -95,8 +96,7 @@ function restart() {
   alert("Configuration has been restarted");
 }
 
-
-
+// below functions are basen on AJAX callbacks which are using node js api on the server side
 function processBobInter4() {
   var xmlHttp = new XMLHttpRequest();
   xmlHttp.onreadystatechange = function() {
@@ -159,8 +159,6 @@ function processBobInter() {
   xmlHttp.open("GET", 'http://localhost:8080/rsa/' + msg + '/' + d + '/' + n, true);
   xmlHttp.send(null);
 }
-
-
 
 function processAliceInter4() {
   var xmlHttp = new XMLHttpRequest();
@@ -225,9 +223,6 @@ function processAliceInter() {
   xmlHttp.send(null);
 }
 
-
-
-
 function processBobDec() {
   var xmlHttp = new XMLHttpRequest();
   xmlHttp.onreadystatechange = function() {
@@ -290,7 +285,7 @@ function processAlice() {
 }
 
 
-
+// key generation and message sending functions (no ajax)
 function usePrimes() {
   p = document.getElementById("p").value;
   q = document.getElementById("q").value;
@@ -340,27 +335,6 @@ function generateKeys() {
     document.getElementById("private").innerHTML = 'private key (d,n) -> (' + d + ',' + n + ')';
     document.getElementById("public").innerHTML = 'public key (e,n) -> (' + e + ',' + n + ')';
   }
-}
-
-function checkIfPrime(number) {
-  if (number < 2) {
-    return false;
-  }
-  for (let x = 2; x < (number / 2) + 1; x++) {
-    if (number % x == 0) {
-      return false;
-    }
-  }
-  return true;
-}
-
-function checkIfRelPrime(number, number2) {
-  for (let x = 2; x < number + 1; x++) {
-    if (number % x == 0 && number2 % x == 0) {
-      return false;
-    }
-  }
-  return true;
 }
 
 function sendPublicKey() {
@@ -415,4 +389,27 @@ function bobSendMessage() {
       processAlice();
     }
   }
+}
+
+// function checks if the number is primes
+function checkIfPrime(number) {
+  if (number < 2) {
+    return false;
+  }
+  for (let x = 2; x < (number / 2) + 1; x++) {
+    if (number % x == 0) {
+      return false;
+    }
+  }
+  return true;
+}
+
+// function checks if two given numbers are relatively prime (no common factors)
+function checkIfRelPrime(number, number2) { // first argument is the smaller number
+  for (let x = 2; x < number + 1; x++) {
+    if (number % x == 0 && number2 % x == 0) {
+      return false;
+    }
+  }
+  return true;
 }

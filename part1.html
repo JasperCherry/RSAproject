@@ -1,4 +1,5 @@
 <html>
+<!-- header links -->
 
 <head>
   <!-- Latest compiled and minified CSS -->
@@ -10,9 +11,10 @@
   <!-- users js functionality -->
   <script src="logic1.js"></script>
 </head>
+<!-- body of website -->
 
 <body>
-  <!-- A -->
+  <!-- A / Alice panel, the left one -->
   <div style="background-color:orange" class="col-xs-4 well pull-left" id="aliceDiv">
     <h2>Alice</h2>
     <br>
@@ -51,7 +53,7 @@
     <h4>message decrypted:</h4>
     <h4 id="msgD">none</h4>
   </div>
-  <!-- B -->
+  <!-- B / Bob panel, the right one -->
   <div style="background-color:lightblue" class="col-xs-4 well pull-right" id="bobDiv">
     <h2>Bob</h2>
     <br>
@@ -70,7 +72,7 @@
     <br>
     <button class="btn btn-success" onclick="bobSendMessage()">Encrypt message and send to Alice</button>
   </div>
-  <!-- C -->
+  <!-- C / Charlie panel, the middle one -->
   <div style="background-color:lightgray" class="col-xs-4 well pull-center" id="charlieDiv">
     <h2>Charlie (interceptor)</h2>
     <br>

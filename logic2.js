@@ -1,31 +1,29 @@
-// Server
+// Server data
+// Alice public key
 let SAn = 12533;
 let SAe = 17;
-let SAs = "6e625e58b03c4ecf 1a5e7eb497a103dd 56edcfe5bb25528f 5094a57a28440620";
-
+let SAs = "6e625e58b03c4ecf 1a5e7eb497a103dd 56edcfe5bb25528f 5094a57a28440620"; // signature
+// Bob public key
 let SBn = 21311;
 let SBe = 179;
-let SBs = "999bd551d9418dbd 38fb322e8acf6791 58c51f41b2bde020 077c06baf352dc96";
-
-// Alice
-let Anonce = 77;
-let An = 12533;
+let SBs = "999bd551d9418dbd 38fb322e8acf6791 58c51f41b2bde020 077c06baf352dc96"; // signature
+// Alice data
+let Anonce = 77; // one time nonce
+let An = 12533; // private and public key numbers
 let Ae = 17;
 let Ad = 10853;
-let AnonceReceived;
-let AnonceDec;
-let AnonceBack;
-let AmyNonce;
-
-// Bob
-let Bnounce = 61;
-let Bn = 21311;
+let AnonceReceived; // nonce received by Alice
+let AnonceDec; // nonce decrypted
+let AnonceBack; // nonce send back to Bob
+let AmyNonce; // nonce of Alice received back
+// Bob data
+let Bnounce = 61; // Bob's nonce
+let Bn = 21311; // private and public key numbers
 let Be = 179;
 let Bd = 18419;
-let BnonceReceived;
-let BnonceDec;
-
-// logic
+let BnonceReceived; // nonce received by Bob
+let BnonceDec; // nonce decrypted
+// global boolean logic responsible for eaach part of process
 let aliceAsked = false;
 let bobAsked = false;
 let aliceEncryptedAndSend = false;
@@ -60,6 +58,7 @@ function aliceSendNonce() {
   }
 }
 
+// below functions are basen on AJAX callbacks which are using node js api on the server side
 function bobDecrypt() {
   if (bobAsked && aliceEncryptedAndSend) {
     bobDecrypted = true;

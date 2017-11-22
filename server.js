@@ -1,3 +1,4 @@
+// importing packages
 var Client = require('node-wolfram');
 var Wolfram = new Client('LU2W26-EPRQKKG36V');
 var express = require('express');
@@ -25,7 +26,7 @@ var server = app.listen(8080, function() {
   console.log('Server is running at : ' + server.address().port);
 });
 
-
+// api call that communicate with Wolfram Alpha
 app.get('/rsa/:m/:e/:n', function(req, res) {
   m = req.params.m;
   e = req.params.e;
@@ -42,6 +43,7 @@ app.get('/rsa/:m/:e/:n', function(req, res) {
   });
 });
 
+// api call that generates hash
 app.get('/sha/:string', function(req, res) {
   string = req.params.string;
   output = (sha256(string));
